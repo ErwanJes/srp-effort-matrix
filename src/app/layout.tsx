@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matrice d'effort",
+  title: "Matrice d'effort - Discovery",
 };
 
 export default function RootLayout({

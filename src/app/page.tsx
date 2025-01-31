@@ -8,7 +8,7 @@ const Matrix = () => {
     { name: "Niveau de connaissance", options: ["Maîtrisé", "Intermédiaire", "Basique", "Vague", "Inconnu"] },
     { name: "Dépendance", options: ["Aucune", "Légère", "Modérée", "Élevée", "Critique"] },
     { name: "Complexité", options: ["Très faible", "Faible", "Modérée", "Élevée", "Très élevée"] },
-    { name: "Temps", options: ["Moins de 2h", "1/2 journée", "Plus de 2 jours", "Quelques jours", "1 semaine ou plus"] },
+    { name: "Temps", options: ["Moins de 2h", "1/2 journée", "2 jours ou moins", "Quelques jours", "1 semaine ou plus"] },
   ];
 
   const points = [10, 20, 30, 60, 100];
@@ -36,7 +36,7 @@ const Matrix = () => {
   return (
     <div>
       <div id="matrix" className="p-4">
-        <h1 className="text-2xl font-bold mb-4">Matrice d&apos;Effort</h1>
+        <h1 className="text-2xl font-bold mb-4">Matrice d&apos;Effort de l&apos;équipe Discovery ⚡️</h1>
         <div className="grid grid-cols-6 gap-2">
           <div></div>
           {points.map((point, index) => (
