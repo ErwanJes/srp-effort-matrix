@@ -31,6 +31,39 @@ const Matrix = () => {
     }
   };
 
+  const copyToClipboard = async () => {
+    const element = document.getElementById("matrix");
+    if (element != null) {
+      try {
+        // Convert the div to a canvas
+        const canvas = await html2canvas(element, { useCORS: true });
+        
+        // Convert the canvas to a blob
+        canvas.toBlob(async (blob) => {
+          if (blob) {
+            try {
+              // Write the blob (image) to clipboard
+              await navigator.clipboard.write([
+                new ClipboardItem({ "image/png": blob }),
+              ]);
+
+              const toast = document.getElementById("toast");
+              if (toast != null) {
+                toast.classList.remove("hidden");
+                toast.classList.add("fade-in-out");
+              }
+            } catch (err) {
+              console.error("Clipboard write failed:", err);
+            }
+          }
+        }, "image/png");
+        
+      } catch (err) {
+        console.error("Failed to copy image:", err);
+      }
+    }
+  };
+
   const totalPoints = Object.values(selected).reduce((sum, colIndex) => sum + points[colIndex], 0);
 
   return (
@@ -70,8 +103,12 @@ const Matrix = () => {
         </div>
       </div>
       <div className="flex float-right">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4" onClick={downloadImage}>Télécharger</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4" onClick={copyToClipboard}>Copier le tableau</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4" onClick={downloadImage}>Télécharger</button>
       </div>
+      <div id="toast" className="fixed bottom-5 right-5 bg-black text-white px-4 py-3 rounded-lg shadow-lg animate-slideIn hidden">
+          ✅ Image copiée !
+        </div>
     </div>
   );
 };
