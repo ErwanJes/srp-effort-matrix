@@ -50,7 +50,14 @@ const Matrix = () => {
               const toast = document.getElementById("toast");
               if (toast != null) {
                 toast.classList.remove("hidden");
-                toast.classList.add("fade-in-out");
+
+                // Show the toast
+                toast.classList.add("show");
+              
+                // Hide it after 3 seconds
+                setTimeout(() => {
+                  toast.classList.remove("show");
+                }, 3000);
               }
             } catch (err) {
               console.error("Clipboard write failed:", err);
@@ -106,7 +113,7 @@ const Matrix = () => {
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4" onClick={copyToClipboard}>Copier le tableau</button>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4" onClick={downloadImage}>Télécharger</button>
       </div>
-      <div id="toast" className="fixed bottom-5 right-5 bg-black text-white px-4 py-3 rounded-lg shadow-lg animate-slideIn hidden">
+      <div id="toast" className="toast fixed bottom-5 right-5 bg-black text-white px-4 py-3 rounded-lg shadow-lg animate-slideIn">
           ✅ Image copiée !
         </div>
     </div>

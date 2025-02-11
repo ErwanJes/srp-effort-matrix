@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-:root {
-}
 body {
   color: var(--foreground);
   background: var(--background);
@@ -13,10 +11,23 @@ body {
   border-width: 3px;
 }
 
-.hidden {
+.toast {
+  visibility: hidden;
   opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
+/* .hidden {
+  opacity: 0;
+} */
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  /* animation: fade-in 1s ease-in forwards */
+}
+
+/* 
 .fade-in-out {
   opacity: 0;
   animation: fade-in 1s ease-in forwards, fade-out 4s 1s ease-out forwards;
@@ -35,4 +46,4 @@ body {
   100% {
     opacity: 0;
   }
-}
+} */
